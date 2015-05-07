@@ -1,0 +1,125 @@
+<form name="user_update_form">
+
+<div class="col-md-12">
+    <div class="col-md-12 text-right">
+        <div class="btn-group btn-group-sm">
+            <a ng-href="#users/create" class="btn btn-primary">New User</a>
+            <a ng-href="#users/reset/{{user.id}}/password"  class="btn btn-primary">ResetPassword</a>
+            <a ng-href="#users/list" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+
+
+    <div class="col-md-12 text-left">
+        <div class="btn-group btn-group-sm">
+            <h4 class="text-primary">Update User Details</h4>
+        </div>
+    </div>
+
+    <div>
+        <div style="width: 50%; margin-left: auto;margin-right: auto;">
+            <table class="table table-responsive table-bordered">
+                <tr>
+                    <td>User Name</td>
+                    <td><input name="input" ng-model="user.userName" style="width: 50%" disabled/></td>
+                </tr>
+                <tr>
+                    <td>First Name</td>
+                    <td><input name="fname" ng-model="user.firstName" style="width: 50%" required/></td>
+                </tr>
+
+                <tr>
+                    <td>Last Name</td>
+                    <td><input name="lname" ng-model="user.lastName" style="width: 50%" required/></td>
+                </tr>
+
+                <tr>
+                    <td>Status</td>
+                    <td><select ng-model="user.userStatus.id"
+                                ng-options="obj.id as obj.value for obj in user_status_list">
+                    </select></td>
+                </tr>
+
+                <tr>
+                    <td>Type</td>
+                    <td><select ng-model="user.userType.id"
+                                ng-options="obj.id as obj.value for obj in user_type_list">
+                    </select></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <!--department push and pop-->
+
+    <div class="panel-body" style="margin-left: 20%">
+        <div style="float: left;margin-left: 30px;">
+            <select size="8" style="width: 200px; "
+                    ng-model="selected_department"
+                    ng-options="obj as obj.name for obj  in not_assigned_department_list">
+                <option value=""><b>Not Assigned Departments</b></option>
+            </select>
+        </div>
+
+
+        <div style="float: left;margin-left: 30px;margin-top: 5%">
+            <input type="button" class="btn btn-primary" value="Add >>" ng-click="pushDepartmentToLeft()"/>
+            <br/>
+            <input type="button" class="btn btn-primary" value="<< Remove" ng-click="pushDepartmentToRight()"
+                   style="margin-top: 10px;"/>
+        </div>
+
+        <div class="panel-body" style="margin-left: 30%">
+            <div style="float: left;margin-left: 30px;">
+                <select size="8" style="width: 200px;"
+                        ng-model="selected_department"
+                        ng-options="obj as obj.name for obj  in assigned_department_list">
+                    <option value=""><b>Assigned Departments</b></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+    <!--Touch Point push and pop-->
+    <div class="panel-body" style="margin-left: 20%">
+        <div style="float: left;margin-left: 30px;">
+            <select size="8" style="width: 200px; "
+                    ng-model="selected_touch_point"
+                    ng-options="obj as obj.name for obj  in not_assigned_touch_point_list">
+                <option value=""><b>Not Assigned TouchPoints</b></option>
+            </select>
+        </div>
+
+
+        <div style="float: left;margin-left: 30px;margin-top: 5%">
+            <input type="button" class="btn btn-primary" value="Add >>" ng-click="pushTouchPointToLeft()"/>
+            <br/>
+            <input type="button" class="btn btn-primary" value="<< Remove" ng-click="pushTouchPointToRight()"
+                   style="margin-top: 10px;"/>
+        </div>
+
+        <div class="panel-body" style="margin-left: 30%">
+            <div style="float: left;margin-left: 30px;">
+                <select size="8" style="width: 200px;"
+                        ng-model="selected_touch_point"
+                        ng-options="obj as obj.name for obj  in assigned_touch_point_list">
+                    <option value=""><b>Assigned TouchPoints</b></option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <!---->
+
+    <div class="col-md-12 text-right">
+        <div class="btn-group btn-group-sm">
+            <input type="submit" value="Update" ng-click="update(user_update_form)" class="btn btn-primary"/>
+            <a ng-click="cancel()" class="btn btn-primary" style="border-left: 10px">Cancel</a>
+        </div>
+    </div>
+
+
+</div>
+</form>
+

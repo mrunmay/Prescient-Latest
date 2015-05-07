@@ -1,0 +1,49 @@
+<form name="app_form">
+
+    <div class="col-md-12">
+
+        <div class="col-md-12 text-right">
+            <div class="btn-group btn-group-sm">
+                <a ng-href="#manager/guest/contact/create" class="btn btn-primary">Create</a>
+                <a ng-href="#welcome" class="btn btn-primary">Back</a>
+
+            </div>
+        </div>
+
+        <div class="col-md-12 text-left">
+            <h4 class="text-primary"><b>Guest Contact List</b></h4>
+        </div>
+
+
+
+        <div class="col-md-12 text-right">
+            <h5>  <input type="text" ng-model="search" placeholder="Search"/></h5>
+        </div>
+
+
+
+        <table class="table table-hover table-condensed table-striped table-responsive">
+            <tr>
+                <th>Contact List</th>
+
+                <th></th>
+            </tr>
+
+            <tr ng-repeat="contact in contact_list1=(contact_list | filter:search)">
+                <td>{{contact.name}}</td>
+                <td>
+                    <a ng-href="#manager/guest/contact/view/{{contact.id}}">Detail</a>
+                </td>
+            </tr>
+        </table>
+
+        <div class="col-md-12 text-center" ng-show="!contact_list1.length">
+            <h4 class="text-primary"><b>No Contacts Found </b></h4>
+        </div>
+    </div>
+
+
+    </div>
+
+</form>
+

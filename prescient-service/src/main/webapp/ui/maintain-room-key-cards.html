@@ -1,0 +1,81 @@
+<div class="col-md-12">
+
+    <div class="col-md-12 text-right">
+        <div class="btn-group btn-group-sm">
+            <a ng-click="onClickIssueButton()" class="btn btn-primary">Issue</a>
+            <a ng-href="#maintain/guest/{{guest_id}}/roomcarddetails" class="btn btn-primary">Back</a>
+        </div>
+    </div>
+
+    <div class="col-md-12 text-left">
+        <h4 class="text-primary"></h4>
+    </div>
+
+    <div class="col-md-12 text-left">
+        <h4 class="text-primary"><b>Room key Cards</b></h4>
+    </div>
+
+
+    <div style="width: 50%; margin-left: auto;margin-right: auto;">
+        <table class=" table table-responsive table-bordered">
+
+
+            <tr style="text-align: center;background-color:#aaaaaa">
+                <td>Title</td>
+                <td>First Name</td>
+                <td>Surname</td>
+                <td>Preferred Name</td>
+            </tr>
+
+            <tr style="text-align: center">
+                <td>{{guest_detail.title}}</td>
+                 <td>{{guest_detail.firstName}}</td>
+                 <td>{{guest_detail.surname}}</td>
+                 <td>{{guest_detail.preferredName}}</td>
+            </tr>
+            </table>
+        </div>
+
+
+    <div style="width: 50%; margin-left: auto;margin-right: auto;">
+        <table class=" table table-responsive table-bordered">
+
+           <tr>
+                <td>Allotted Cards</td>
+                <td>
+                    <select ng-model="current_card"  ng-change="onSelectCardFromList()"
+                            ng-options="obj.card as obj.card.magStripeNo for obj in current_key_cards" required>
+                        <option value="">cards</option>
+                    </select>
+                </td>
+            </tr>
+
+            <tr ng-show="issue_flag">
+                <td>Room Key Cards</td>
+                <td>
+                    <select multiple ng-model="y.guest_room_key_cards"
+                            ng-options="obj as obj.magStripeNo for obj in guest_room_key_cards" required>
+                        <option value="">select</option>
+                    </select>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+
+    <div class="col-md-12 text-center">
+        <b style="color: RED;">{{message}} </b>
+    </div>
+
+
+    <div class="col-md-12 text-right">
+        <div class="btn-group btn-group-sm">
+            <button type="submit"  ng-show="issue_flag"  class="btn btn-primary" ng-click="issueCard()">IssueCard</button>
+            <button type="submit"  ng-show="return_flag"  class="btn btn-primary" ng-click="returnCard()">Return</button>
+            <button type="submit"  ng-show="return_all_flag"  class="btn btn-primary" ng-click="returnAllCards()">Return All</button>
+            <a ng-href="#maintain/guest/{{guest_id}}/roomcarddetails" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+</div>
+
+
